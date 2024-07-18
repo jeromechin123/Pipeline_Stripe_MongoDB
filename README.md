@@ -5,11 +5,11 @@ This pipeline consists of multiple .py files for fine tuning and troubleshooting
 
 # Pipeline process
 
-1. A connection is established with MongoDb server and Stripe and verified before proceeding
+1. A connection is verified with MongoDb server and Stripe before proceeding. There are two Stripe payment database that needs to be joined for our final analysis
   
 2. The source data is imported through an API connection to the Stripe servers with pagination to ensure that the right data is imported. 
    
-3. Selected tables are dumped into a loading zone in a clustered MongoDB database to reduct Stripe API call limits.
+3. Selected tables are dumped into a loading zone in a clustered MongoDB database to avoid Stripe API call limits.
 
 4. The tables in the landing zone are imported from the MongoDB database to be normalised and cleaned. The subscription table was joined with the customer table to get the customer information.
 
